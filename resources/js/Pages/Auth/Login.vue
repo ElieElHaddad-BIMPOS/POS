@@ -14,6 +14,7 @@ defineProps({
 });
 
 const form = useForm({
+    logincode: '',
     email: '',
     password: '',
     remember: false,
@@ -28,11 +29,71 @@ const submit = () => {
     });
 };
 </script>
+<style>
+.lables{
+    color: goldenrod;
+    font-weight: 800;
+}
+.btn-login-submit {
+    background-color: goldenrod;
+    color: black;
+}
+/* Style for the input field */
+#calculator-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: right;
+}
 
+/* Style for the calculator buttons */
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.digit {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.digit:hover {
+    background-color: #e0e0e0;
+}
+
+/* Style for the clear a */
+#clear-a {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#clear-a:hover {
+    background-color: #ff4136;
+}
+
+</style>
 <template>
     <Head title="Log in" />
 
-    <AuthenticationCard>
+    <AuthenticationCard > 
         <template #logo>
             <AuthenticationCardLogo />
         </template>
@@ -41,13 +102,13 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form  @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel class="lables" for="logincode" value="Enter Login Code" />
                 <TextInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
+                    id="logincode"
+                    v-model="form.logincode"
+                    type="number"
                     class="mt-1 block w-full"
                     required
                     autofocus
@@ -55,36 +116,51 @@ const submit = () => {
                 />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="current-password"
-                />
-                <InputError class="mt-2" :message="form.errors.password" />
+            <div class="calculator">
+                <a class="digit" @click="appendToInput('1')">1</a>
+                <a class="digit" @click="appendToInput('2')">2</a>
+                <a class="digit" @click="appendToInput('3')">3</a>
+                <a class="digit" @click="appendToInput('4')">4</a>
+                <a class="digit" @click="appendToInput('5')">5</a>
+                <a class="digit" @click="appendToInput('6')">6</a>
+                <a class="digit" @click="appendToInput('7')">7</a>
+                <a class="digit" @click="appendToInput('8')">8</a>
+                <a class="digit" @click="appendToInput('9')">9</a>
+                <a class="digit clear" @click="clearInput">Clear</a>
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ml-2 text-sm text-gray-600 lables">Remember me</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="lables underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Forgot your password?
                 </Link>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton class="ml-4 btn-login-submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
                 </PrimaryButton>
             </div>
         </form>
     </AuthenticationCard>
 </template>
+<script>
+export default {
+    data() {
+    return {
+    };
+  }, 
+  methods: {
+    appendToInput(value) {
+      this.form.logincode += value; // Append the clicked digit to the input value
+    },
+    clearInput() {
+      this.form.logincode = ''; // Clear the input value
+    },
+  }
+}
+</script>
