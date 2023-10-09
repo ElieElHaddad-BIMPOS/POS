@@ -26,17 +26,220 @@ const logout = () => {
     router.post(route('logout'));
 };
 </script>
+<style>
+.lable {
+    text-decoration: none;
+    color:white
+}
+.body-bg {
+    background-color: rgba(33, 37, 41);
+}
+.nav-bg {
+    background-color: black;
+}
+.active-nav {
+    border-bottom: 2px solid rgba(246, 147, 35);
+}
+body {
+    background-color: grey;
+}
 
+.side-bar[data-position="right"]{
+  position: absolute;
+  right: 0;
+  min-height: 100%;
+  width: 25%;
+  background-color: black;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.side-bar[data-position="right"] .item:hover {
+  background-color: rgba(246, 147, 35);
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+  cursor: pointer;
+}
+
+.side-bar[data-position="right"] .item {
+  color: white;
+  height: 100%;
+  width: 25%;
+  /* background-color: #444; */
+  text-align: center;
+  
+}
+.side-bar[data-position="left"]{
+    position: absolute;
+    min-height: 100%;
+    width: 64px;
+    background-color: black;
+}
+
+.side-bar[data-position="left"] .item:hover {
+  background-color: rgba(246, 147, 35);
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  cursor: pointer;
+}
+
+.side-bar[data-position="left"] .item {
+  color: white;
+  height: 64px;
+  width: 64px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 20px;
+  
+}
+div.item a {
+    text-decoration: none;
+    color: white;
+    margin-top: 100px;
+}
+
+.active {
+  background-color: rgba(33, 37, 41);
+  border: 2px solid rgba(33, 37, 41);
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+}
+.inner-item{
+    color: black;
+    background-color: rgba(246, 147, 35);
+    border: 2px solid rgba(246, 147, 35);
+    border-radius: 10%;
+    width: 40px;
+    height: 35px;
+    margin-left: 16%;
+    margin-top: 20%;
+}
+.inner-icon{
+    text-align: center;
+
+    
+}
+.inner-active {
+    color: black;
+    background-color: rgba(246, 147, 35);
+    border: 2px solid rgba(246, 147, 35);
+    border-radius: 10%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin-left:16%;
+}
+.order-number {
+    color: white;
+    font-size: 20px;
+}
+.ordertype-container {
+    margin-top: 3%;
+}
+.ordertype-btns {
+    margin-right: 10px;
+}
+.btn-outline-bimpos {
+    --bs-btn-color: rgba(246, 147, 35);
+  --bs-btn-border-color: rgba(246, 147, 35);
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: rgba(246, 147, 35);
+  --bs-btn-hover-border-color: rgba(246, 147, 35);
+  --bs-btn-focus-shadow-rgb: 248,249,250;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: rgba(246, 147, 35);
+  --bs-btn-active-border-color: rgba(246, 147, 35);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: rgba(246, 147, 35);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: rgba(246, 147, 35);
+  --bs-gradient: none;
+}
+.row-item-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.iteminfo-container {
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+.item-info-text {
+    color: white;
+    font-size: 16px;
+}
+.item-info-qty {
+    margin-right: 20%;
+    color: white;
+    font-size: 16px;
+}
+.item-info-price {
+    margin-right: 8%;
+    color: white;
+    font-size: 16px;
+}
+.item-box-container {
+    background-color: rgba(33, 37, 41);
+    border: 1px solid rgba(33, 37, 41);
+    border-radius: 10px;
+    padding: 20px;
+    height: 150px;
+}
+.item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.item-image {
+    width: 40px;
+    height: 40px;
+}
+.item-name {
+    margin-left: -50px;
+    color:white
+}
+.item-qty {
+    margin-right: 8%;
+    color:white;
+}
+.item-qty-price {
+    color:white
+
+}
+.item-price {
+    margin-right: 8%;
+    color:white
+}
+.item-input-container {
+    margin-top: 3%;
+}
+.material-symbols-outlined {
+    inline-height: 0;
+}
+.trash-btn {
+    font-size: 0;
+}
+.item-box-container {
+    margin-bottom: 5%;
+}
+</style>
 <template>
     <div>
         <Head :title="title" />
 
         <Banner />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen body-bg">
+            <nav class="nav-bg">
                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="px-3 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
@@ -47,8 +250,8 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                            <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink class="lable" :href="route('dashboard')" :class="{ 'active-nav': isActive('/dashboard') }">
                                     Dashboard
                                 </NavLink>
                             </div>
@@ -272,7 +475,153 @@ const logout = () => {
                     </div>
                 </div>
             </nav>
+            <div class="side-panel" id="side-panel">
+                <div data-position="left" class="side-bar">
+                    <div class="item" :class="{ 'active': isActive('/dashboard') }" > 
+                        <a :href="route('dashboard')" >
+                            <div class="inner-item">
+                                <span class="inner-icon material-symbols-outlined">
+                                    point_of_sale
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
+                    <div class="item" :class="{ 'active': isActive('/test') }" > 
+                        <a :href="route('dashboard')" >
+                            <div class="inner-item" :class="{ 'inner-active': isActive('/test') }">
+                                <span class="inner-icon  material-symbols-outlined">
+                                    schedule
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item"><i class="fa fa-comments-o"></i></div>
+                    <div class="item"><i class="fa fa-folder-o"></i></div>
+                    <div class="item"><i class="fa fa-file-code-o"></i></div>
+
+                    <div class="item bottom" id="show_hide"><i class="fa fa-angle-double-right"></i></div>
+                </div>
+            </div>
+            <div class=" side-panel" id="side-panel">
+                <div data-position="right" class="side-bar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="order-number">Order #19985</div>
+                        </div>
+                        <div class="row">
+                            <div class="ordertype-container">
+                                <div class="btn ordertype-btns btn-outline-bimpos">Dine In</div>
+                                <div class="btn ordertype-btns btn-outline-bimpos">Take Away</div>
+                                <div class="btn ordertype-btns btn-outline-bimpos">Delivery</div>
+                            </div>
+                        </div>
+                        <div class="row row-item-info">
+                            <div class="iteminfo-container">
+                                <div class="item-info-text">Items</div>
+                                <div class="spacer"></div>
+                                <div class="item-info-qty">Qty</div>
+                                <div class="item-info-price">Price</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="items-box-container">
+                                <div class="item-box-container">
+                                    <div class="item-container">
+                                        <div class="item-image"><img src="/img/logo.png"  ></div>
+                                        <div class="item-name">Spicy Salmon Salad</div>
+                                        <div class="item-qty">
+                                            <button class="btn btn-secondary">2</button>
+                                        </div>
+                                        <div class="item-qty-price">$24.00</div>
+                                    </div>
+                                    <div class="item-price">$12.00</div>
+
+                                    <div class="item-input-container">
+
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-auto">
+                                                <button class="btn trash-btn btn-outline-danger">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="item-box-container">
+                                    <div class="item-container">
+                                        <div class="item-image"><img src="/img/logo.png"  ></div>
+                                        <div class="item-name">Spicy Salmon Salad</div>
+                                        <div class="item-qty">
+                                            <button class="btn btn-secondary">2</button>
+                                        </div>
+                                        <div class="item-qty-price">$24.00</div>
+                                    </div>
+                                    <div class="item-price">$12.00</div>
+
+                                    <div class="item-input-container">
+
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-auto">
+                                                <button class="btn trash-btn btn-outline-danger">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="item-box-container">
+                                    <div class="item-container">
+                                        <div class="item-image"><img src="/img/logo.png"  ></div>
+                                        <div class="item-name">Spicy Salmon Salad</div>
+                                        <div class="item-qty">
+                                            <button class="btn btn-secondary">2</button>
+                                        </div>
+                                        <div class="item-qty-price">$24.00</div>
+                                    </div>
+                                    <div class="item-price">$12.00</div>
+
+                                    <div class="item-input-container">
+
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-auto">
+                                                <button class="btn trash-btn btn-outline-danger">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="item" > 
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="item" > 
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Page Heading -->
             <header v-if="$slots.header" class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -287,3 +636,23 @@ const logout = () => {
         </div>
     </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+    };
+  },
+  computed: {
+
+  },
+  mounted(){
+    
+  },
+  methods: {
+    isActive(route) {
+        return window.location.pathname === route;
+    },
+
+  },
+};
+</script>
