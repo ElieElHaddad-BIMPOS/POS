@@ -16,7 +16,12 @@ class LoginController extends Controller
     {
         return Inertia::render('Auth/Login');
     }
+    public function backOfficeShowLoginForm()
+    {
+        return Inertia::render('Auth/BackOfficeLogin');
+    }
 
+    
     public function login(Request $request)
     {
         $getUser = User::select('logincode')
@@ -50,6 +55,44 @@ class LoginController extends Controller
             } else {
                 // No user with matching logincode found
                 return back()->withInput()->withErrors(['logincode' => 'Login failed.']);
+            }
+
+        }
+    }
+
+    public function backofficelogin(Request $request)
+    {
+        $getUser = User::select('email')
+        ->where('email', $request->email)
+        ->where('isactive', 1)
+        ->first();
+
+        $getUser = $getUser->email ?? NULL;
+        
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if ($getUser == NULL) {
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ]);
+        }
+        else {
+            if (Auth::guard('web')->attempt($credentials)) {
+                $request->session()->regenerate();
+
+                return Inertia::location(route('backoffice.dashboard'), [
+                    'user' => Auth::user()
+                ]);
+                
+
+            }
+            else {
+                return back()->withErrors([
+                    'email' => 'The provided credentials do not match our records.',
+                ]);
             }
 
         }
