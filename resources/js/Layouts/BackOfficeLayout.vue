@@ -33,7 +33,7 @@ const logout = () => {
     color:white
 }
 .body-bg {
-    background-color: #212529;
+    background-color: #fafafa;
 }
 .nav-bg {
     position: fixed;
@@ -47,7 +47,7 @@ const logout = () => {
     border-bottom: 2px solid rgba(246, 147, 35);
 }
 body {
-    background-color: grey;
+    background-color: white;
 }
 .side-bar[data-position="left"]{
     position: fixed;
@@ -130,7 +130,6 @@ div.item a {
 
 
 .main-content {
-    width: 80%; /* Same as the side panel width */
     padding: 20px; /* Adjust this as needed */
 }
 @media (max-width: 768px) {
@@ -139,293 +138,350 @@ div.item a {
     }
 }
 
+.ms-1{
+  color:white;
+}
 
+.inside a{
+  color:lightblue;
+}
+
+  
+  .col{
+    border: solid;
+    width:100%;
+    height: 300px;
+    background-image: url("https://hw-events.s3.amazonaws.com/636294cf5cb43c71cf9ed524/cat.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.nav-container{
+    border-right: 2px solid #f77d10;
+}
+.the-dashboard {
+    color: #f77d10;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+.the-logo{
+    width: 60%;
+    padding-top:30px
+}
+
+.in-page-title {
+    color: #f77d10;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 800;
+
+
+}
+
+
+.line-div{
+    content: '';
+    width: 100%;
+    height: 2px; /* Adjust the thickness of the line */
+    background-color: #dbdbdb; /* Adjust the color of the line */
+    transform: translateY(-50%);
+}
+
+.icon-left-arrow {
+    color: #696969
+}
+
+.drop-down-products-title {
+    color: #696969;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 800;
+
+
+
+}
+.drop-down-products-descript {
+    color: #dbdbdb;
+    text-transform: uppercase;
+    font-size: 8px;
+
+
+}
+.drop-down-products-amount {
+    color: #777777;
+    font-weight: 800;
+}
+
+.drop-down-products-amount-icon {
+    background-color: #f77d10;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px !important;
+
+    display: inline-flex; /* Ensures the element is only as wide as its content */
+    align-items: center; /* Centers the icon vertically */
+    justify-content: center; /* Centers the icon horizontally */
+    width: 20px; /* Set the width of the circle */
+    height: 20px; /* Set the height of the circle */
+}
+
+.drop-down-products-amount-container  {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.drop-down-products-title-container {
+    text-align: start;
+}
+.drop-down-products{
+    width:100%;
+}
+
+.rounded-pill-start {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.rounded-pill-end {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px; /* To overlap the button and input slightly */
+}
+.search-input {
+    border-radius: 20px 20px 20px 20px;
+    background-color: #eeeeee;
+    margin-right: -15px;
+    z-index: 1000;
+}
+
+.search-input::placeholder {
+    color: #c9c9c9;  /* Custom color */
+    font-size: 8px;  /* Custom font size */
+    opacity: 1;  /* Ensures the custom color is fully applied */
+}
+
+.btn-search-submit {
+    border-radius: 0 20px 20px 0;
+    background-color: #f77d10;
+    color: white;
+    width:80px;
+    font-size: 12px;
+    font-weight: 800;
+}
+.btn-search-submit:hover {
+    background-color: #bb5c08;
+    color: white;
+
+}
+
+.search-title {
+    color: #696969;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 800;
+    text-align: start;
+}
+
+.search-container {
+    text-align: start;
+}
+
+.li-link-container {
+    background-color: #dbdbdb;
+    padding: 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.li-link-container-is-active {
+    background-color: #F77D10;
+}
+
+.li-link {
+    color: #929292;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.li-link-is-active {
+    color: #ffffff;
+}
+
+.list-container {
+    width: 100%;
+    padding: 10px 15px; /* Adjust padding as needed */
+}
 
 </style>
 <template>
     <div>
+        
         <Head :title="title" />
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <Banner />
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
         <div class="min-h-screen body-bg">
-            <nav class="nav-bg">
-                <!-- Primary Navigation Menu -->
-                <div class="px-3 sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16">
-                        <div class="flex">
-                            <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationMark class="block h-9 w-auto" />
-                                </Link>
-                            </div>
+            <div class="container-fluid">
+                <div class="row flex-nowrap">
+                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light nav-container d-flex flex-column justify-content-center align-items-center">
+                        <div class="d-flex flex-column align-items-center text-center min-vh-100">
+                            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 the-logo text-decoration-none justify-content-center">
+                                <img src="https://financesonline.com/uploads/2019/02/BIM-POS-logo.jpg">
+                            </a> 
+                            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 the-dashboard text-decoration-none justify-content-center">
+                                <span class="d-none d-sm-inline">The Dashboard</span>
+                            </a> 
+                            <hr />
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                                <div class="line-div"></div>
 
-                            <!-- Navigation Links -->
-                            <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink class="lable" :href="route('backoffice.dashboard')" :class="{ 'active-nav': isActive('/backoffice') }">
-                                    Back Office
-                                </NavLink>
-                            </div>
-                        </div>
-
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <div class="ml-3 relative">
-                                <!-- Teams Dropdown -->
-                                <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
-                                    <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                                {{ $page.props.auth.user.current_team.name }}
-
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                                </svg>
-                                            </button>
+                                <li class="container nav-item li-in-page-title">
+                                    
+                                    <a href="#" class="nav-link d-flex align-items-center">
+                                        
+                                        <span class="material-symbols-outlined me-2 icon-left-arrow">
+                                            chevron_left
                                         </span>
-                                    </template>
+                                        
+                                        <span class="in-page-title">Product Setup</span>
+                                    </a>
 
-                                    <template #content>
-                                        <div class="w-60">
-                                            <!-- Team Management -->
-                                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                                Manage Team
-                                            </div>
+                                </li>
+                                <div class="line-div"></div>
 
-                                            <!-- Team Settings -->
-                                            <DropdownLink :href="route('teams.show', $page.props.auth.user.current_team)">
-                                                Team Settings
-                                            </DropdownLink>
-
-                                            <DropdownLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')">
-                                                Create New Team
-                                            </DropdownLink>
-
-                                            <!-- Team Switcher -->
-                                            <template v-if="$page.props.auth.user.all_teams.length > 1">
-                                                <div class="border-t border-gray-200" />
-
-                                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                                    Switch Teams
-                                                </div>
-
-                                                <template v-for="team in $page.props.auth.user.all_teams" :key="team.id">
-                                                    <form @submit.prevent="switchToTeam(team)">
-                                                        <DropdownLink as="button">
-                                                            <div class="flex items-center">
-                                                                <svg v-if="team.id == $page.props.auth.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                </svg>
-
-                                                                <div>{{ team.name }}</div>
-                                                            </div>
-                                                        </DropdownLink>
-                                                    </form>
-                                                </template>
-                                            </template>
+                                <li class="nav-item drop-down-products">
+                                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link ">
+                                        <i class="fs-4 bi-speedometer2"></i> 
+                                        <div class="drop-down-products-title-container">
+                                            <span class="drop-down-products-title">
+                                                USD Products
+                                            </span> 
+                                            <span class="drop-down-products-descript">
+                                                FUSD At
+                                            </span> 
                                         </div>
-                                    </template>
-                                </Dropdown>
-                            </div>
-
-                            <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
-                                <Dropdown align="right" width="48">
-                                    <template #trigger>
-                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
-                                        </button>
-
-                                        <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                                {{ $page.props.auth.user.name }}
-
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </template>
-
-                                    <template #content>
-                                        <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Manage Account
+                                        <div class="drop-down-products-amount-container">
+                                            <span class="d-sm-inline drop-down-products-amount">
+                                                91,000
+                                            </span> 
+                                            <span class="drop-down-products-amount-icon material-symbols-outlined ">
+                                                keyboard_arrow_down
+                                                
+                                            </span> 
                                         </div>
 
-                                        <DropdownLink :href="route('profile.show')">
-                                            Profile
-                                        </DropdownLink>
+                                    </a>
+                                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                        <li class="inside w-100">
+                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                                        </li>
+                                        <li class="inside">
+                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <div class="line-div"></div>
 
-                                        <DropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
-                                            API Tokens
-                                        </DropdownLink>
-
-                                        <div class="border-t border-gray-200" />
-
-                                        <!-- Authentication -->
-                                        <form @submit.prevent="logout">
-                                            <DropdownLink as="button">
-                                                Log Out
-                                            </DropdownLink>
-                                        </form>
-                                    </template>
-                                </Dropdown>
+                                <li class="nav-item nav-link search-container">
+                                    <span class="search-title">
+                                        Quick Search
+                                    </span> 
+                                    <a href="#" class="nav-link px-0 align-middle">
+                                        <i class="fs-4 bi-table"></i>
+                                        <div>
+                                            <form class="form-inline d-flex">
+                                                <input class="form-control search-input rounded-pill-start" type="search" placeholder="Product Description Ex: Burger" aria-label="Search">
+                                                <button class="btn btn-search-submit rounded-pill-end" type="submit">F3</button>
+                                            </form>
+                                        </div>
+                                    </a>
+                                </li>
+                                <div class="list-container">
+                                    <li class="nav-item li-link-container li-link-container-is-active">
+                                        <a href="#" class="nav-link d-flex " >
+                                            <span class="li-link li-link-is-active">General Information</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="nav-item li-link-container">
+                                        <a href="#" class="nav-link d-flex">
+                                            <span class="li-link">Product Details</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item li-link-container">
+                                        <a href="#" class="nav-link d-flex">
+                                            <span class="li-link">Stock Center</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item li-link-container">
+                                        <a href="#" class="nav-link d-flex">
+                                            <span class="li-link">Other Information</span>
+                                        </a>
+                                    </li>
+                                </div>
+                                <li>
+                                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                            <li class="w-100">
+                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                                            </li>
+                                        </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0 align-middle">
+                                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <div class="dropdown pb-4">
+                                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-none d-sm-inline mx-1">loser</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                </ul>
                             </div>
                         </div>
-
-                        <!-- Hamburger -->
-                        <div class="-mr-2 flex items-center sm:hidden">
-                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" @click="showingNavigationDropdown = ! showingNavigationDropdown">
-                                <svg
-                                    class="h-6 w-6"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="side-panel" id="side-panel">
-                    <div data-position="left" class="side-bar">
-                        <div class="item" :class="{ 'active': isActive('/backoffice/products') }" > 
-                            <a :href="route('backoffice.products')" >
-                                <div class="inner-item">
-                                    <span class="inner-icon material-symbols-outlined">
-                                        local_parking
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="item" :class="{ 'active': isActive('/test') }" > 
-                            <a :href="route('dashboard')" >
-                                <div class="inner-item" :class="{ 'inner-active': isActive('/test') }">
-                                    <span class="inner-icon  material-symbols-outlined">
-                                        schedule
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item"><i class="fa fa-comments-o"></i></div>
-                        <div class="item"><i class="fa fa-folder-o"></i></div>
-                        <div class="item"><i class="fa fa-file-code-o"></i></div>
-
-                        <div class="item bottom" id="show_hide"><i class="fa fa-angle-double-right"></i></div>
-                    </div>
-                </div>
-                <!-- Responsive Navigation Menu -->
-                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </ResponsiveNavLink>
                     </div>
 
-                    <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="flex items-center px-4">
-                            <div v-if="$page.props.jetstream.managesProfilePhotos" class="shrink-0 mr-3">
-                                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
-                            </div>
-
-                            <div>
-                                <div class="font-medium text-base text-gray-800">
-                                    {{ $page.props.auth.user.name }}
-                                </div>
-                                <div class="font-medium text-sm text-gray-500">
-                                    {{ $page.props.auth.user.email }}
-                                </div>
-                            </div>
+                    <!-- Page Heading -->
+                    <header v-if="$slots.header" class="bg-white shadow">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            <slot name="header" />
                         </div>
+                    </header>
 
-                        <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
-                            </ResponsiveNavLink>
-
-                            <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
-                                API Tokens
-                            </ResponsiveNavLink>
-
-                            <form method="POST" @submit.prevent="logout">
-                                <ResponsiveNavLink as="button">
-                                    Log Out
-                                </ResponsiveNavLink>
-                            </form>
-
-                            <template v-if="$page.props.jetstream.hasTeamFeatures">
-                                <div class="border-t border-gray-200" />
-
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    Manage Team
-                                </div>
-
-                                <ResponsiveNavLink :href="route('teams.show', $page.props.auth.user.current_team)" :active="route().current('teams.show')">
-                                    Team Settings
-                                </ResponsiveNavLink>
-
-                                <ResponsiveNavLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')" :active="route().current('teams.create')">
-                                    Create New Team
-                                </ResponsiveNavLink>
-
-                                <template v-if="$page.props.auth.user.all_teams.length > 1">
-                                    <div class="border-t border-gray-200" />
-
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        Switch Teams
-                                    </div>
-
-                                    <template v-for="team in $page.props.auth.user.all_teams" :key="team.id">
-                                        <form @submit.prevent="switchToTeam(team)">
-                                            <ResponsiveNavLink as="button">
-                                                <div class="flex items-center">
-                                                    <svg v-if="team.id == $page.props.auth.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                    </svg>
-                                                    <div>{{ team.name }}</div>
-                                                </div>
-                                            </ResponsiveNavLink>
-                                        </form>
-                                    </template>
-                                </template>
-                            </template>
-                        </div>
-                    </div>
+                    <!-- Page Content -->
+                    <main class="main-content">
+                        <slot />
+                    </main>
                 </div>
-            </nav>
-
-            <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
-                </div>
-            </header>
-
-            <!-- Page Content -->
-            <main class="main-content">
-                
-                <slot />
-            </main>
+            </div>
         </div>
+
     </div>
+
 </template>
 <script>
 export default {
