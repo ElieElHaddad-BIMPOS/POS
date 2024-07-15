@@ -159,17 +159,141 @@ input[type="file"] {
 
 .price-switch-container {
   background-color: #cccccc;
-  padding: 5px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.item-quetion {
+  padding: 8px;
+}
+
+.item-quetion-container{
+  background-color: #DADADA;
   border-radius: 5px;
 
 
 }
+
+.manual-label {
+  margin-left: 10px;
+  color: white;
+}
+
+.post-port-label {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.item-label {
+  color: #929292;
+  margin-left: 10px;
+
+}
+
+.form-check-input {
+  margin-left: 0.5em !important;
+  background-size: 50% 100% !important;
+}
+
+.form-check-input:checked {
+  background-color: #EEEEEE !important;
+  border-color: #EEEEEE !important;
+}
+
+
+.form-switch .form-check-input {
+  --bs-form-switch-bg-on: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23F77D10'/></svg>") !important;
+  --bs-form-switch-bg-off: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23696969'/></svg>") !important;
+
+  background-image: var(--bs-form-switch-bg-off);
+}
+
+.form-switch .form-check-input:checked {
+  background-image: var(--bs-form-switch-bg-on);
+}
+
+
+.product-setting-container {
+  border:1px solid #E9E9E9;
+  border-radius: 5px;
+  padding: 13px;
+}
+
+.genaral-setting-container{
+  border:1px solid #E9E9E9;
+  border-radius: 5px;
+  padding: 13px;
+}
+
+.edit-btns {
+  background-color: #F77D10;
+  border-radius: 20px;
+  line-height: 1 !important;
+  color: white;
+  font-size: 12px;
+  margin-top: 2px;
+  font-weight: 800;
+}
+
+.sales-taxes-span {
+  font-size: 16px;
+  font-weight: 800;
+  color: #424242;
+}
+
+.vat-span {
+  font-size: 16px;
+  color: #F89E4E;
+}
+
+.general-settings-checkbox {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23F77D10' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-color: white;
+}
+
+.general-settings-checkbox:checked {
+  background-color: white !important;
+  box-shadow: 0 0 0 2px #C8C8C8 !important;
+}
+
+.general-setting-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #858585;
+}
+
+.single-general-settings-container {
+  margin-top: 40px;
+}
+
+.scrollable-div {
+    height: 900px;
+    overflow: auto;
+    padding-right:  10px;
+}
+  @media (max-width: 1182px) {
+  .main-content {
+    width: 75%;
+  }
+}
+.product-cost-container{
+  border:1px solid #E9E9E9;
+  border-radius: 5px;
+  padding: 13px;
+}
+
 </style>
 <template>
     <BackOfficeLayout title="Products">
 
         
-      <div class="">
+      <div class="scrollable-div">
         <div class="row">
           <div class="col-xl-5">
             <div class="form-input-container">
@@ -210,13 +334,159 @@ input[type="file"] {
                     <label class="form-label hidden-labels" for="exampleInputEmail2">.</label>
                     <div class="form-check form-switch price-switch-container">
                       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                      <label class="form-check-label" for="flexSwitchCheckChecked">Manual Price?</label>
+                      <label class="form-check-label manual-label" for="flexSwitchCheckChecked">Manual Price?</label>
                     </div>
                   </div>
                 </div>
             </div>
 
+            <div class="form-input-container item-quetion-container">
+
+              <div class="form-group row ">
+                  <div class="col-xl-5">
+                    <div class="form-check form-switch item-quetion">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" >
+                      <label class="form-check-label item-label" for="flexSwitchCheckChecked">Regular Item</label>
+                    </div>
+                  </div>
+                  <div class="col-xl-7">
+                    <div class="form-check form-switch item-quetion">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" >
+                      <label class="form-check-label item-label" for="flexSwitchCheckChecked">Keyboard Item</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-input-container"> 
+              <label for="dropdown1" class="form-label">Default Unit **</label>
+              <div class="dropdown w-100">
+                <select class="form-select" aria-label="Default select example" v-model="selectedOption1">
+                  <option disabled value="">Select an option</option>
+                  <option v-for="option in options" :value="option.value">{{ option.label }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-input-container">
+              <label for="dropdown1" class="form-label">Recipe Usage Unit</label>
+              <div class="dropdown w-100">
+                <select class="form-select" aria-label="Default select example" v-model="selectedOption1">
+                  <option disabled value="">Select an option</option>
+                  <option v-for="option in options" :value="option.value">{{ option.label }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-input-container">
+
+              <div class="form-group row">
+                  <div class="col-xl-5">
+                    <label for="dropdown1" class="form-label">Conversion def / recipe</label>
+                    <input type="currency" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="1">
+                  </div>
+                  <div class="col-xl-7">
+                    <label class="form-label hidden-labels" for="exampleInputEmail2">.</label>
+                    <div class="form-check form-switch price-switch-container">
+                      <label class="form-check-label post-port-label" >1 Post >>>>>>>>> 1 Port</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-input-container">
+              <div class="genaral-setting-container">
+                <label for="dropdown1" class="form-label">Genaral Settings</label>
+
+                <div class="form-group row">
+                  <div class="col-xl-4">
+                    <div class="form-check">
+                      <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-isactive" checked>
+                      <label class="form-check-label general-setting-label" for="flexCheckChecked-isactive">
+                        Is Active?
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                    <div class="form-check">
+                      <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-ismodifier" checked>
+                      <label class="form-check-label general-setting-label" for="flexCheckChecked-ismodifier">
+                        Is Modifier?
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-xl-4">
+                    <div class="form-check">
+                      <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-issolditem" checked>
+                      <label class="form-check-label general-setting-label" for="flexCheckChecked-issolditem">
+                        Is Sold Item?
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                    <div class="form-check">
+                      <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-useinrecipes" checked>
+                      <label class="form-check-label general-setting-label" for="flexCheckChecked-useinrecipes">
+                        Use In Recipes?
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-xl-4">
+                    <div class="form-check">
+                      <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-producthasstock" checked>
+                      <label class="form-check-label general-setting-label" for="flexCheckChecked-producthasstock">
+                        Product Has Stock
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                    <div class="form-check">
+                      <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-hidfromstock" checked>
+                      <label class="form-check-label general-setting-label" for="flexCheckChecked-hidfromstock">
+                        Hide From Stock & Pu
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                  </div>
+                </div>
+                <div class="single-general-settings-container">
+                  <div class="form-group row">
+                    <div class="col-xl-12">
+                      <div class="form-check">
+                        <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-producthasstock" checked>
+                        <label class="form-check-label general-setting-label" for="flexCheckChecked-producthasstock">
+                          Is Timed Products? (Item is sold per hour)
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-xl-12">
+                      <div class="form-check">
+                        <input class="form-check-input general-settings-checkbox" type="checkbox" value="" id="flexCheckChecked-producthasstock" checked>
+                        <label class="form-check-label general-setting-label" for="flexCheckChecked-producthasstock">
+                          Server Only Product ( used only in multi-branch businessses)
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
+
+
+
+
           <div class="col-xl-5">
             <div class="form-input-container">
               <label for="dropdown1" class="form-label">Concept</label>
@@ -252,7 +522,125 @@ input[type="file"] {
                 </div>
               </div>
             </div>
+            <div class="form-input-container">
+              <label for="dropdown1" class="form-label">Product Settings</label>
+              <div class="product-setting-container">
+                <div class="form-group row">
+                  <div class="col-xl-2">
+                    <button type="button" class="btn form-control edit-btns" id="exampleInputEmail2">Edit</button>
+                  </div>
+                  <div class="col-xl-1">
+
+                  </div>
+                  <div class="col-xl-5">
+                    <span class="sales-taxes-span">Sales Taxes</span>
+                  </div>
+                  <div class="col-xl-4">
+                    <span class="vat-span">VAT</span>
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-xl-2">
+                    <button type="button" class="btn form-control edit-btns" id="exampleInputEmail2">Edit</button>
+                  </div>
+                  <div class="col-xl-1">
+
+                  </div>
+                  <div class="col-xl-5">
+                    <span class="sales-taxes-span">Purchasing Taxex</span>
+                  </div>
+                  <div class="col-xl-4">
+                    <span class="vat-span">VAT</span>
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-xl-2">
+                    <button type="button" class="btn form-control edit-btns" id="exampleInputEmail2">Edit</button>
+                  </div>
+                  <div class="col-xl-1">
+
+                  </div>
+                  <div class="col-xl-5">
+                    <span class="sales-taxes-span">Question Group</span>
+                  </div>
+                  <div class="col-xl-4">
+                    <span class="vat-span">NONE</span>
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-xl-2">
+                    <button type="button" class="btn form-control edit-btns" id="exampleInputEmail2">Edit</button>
+                  </div>
+                  <div class="col-xl-1">
+
+                  </div>
+                  <div class="col-xl-5">
+                    <span class="sales-taxes-span">Print Chammels</span>
+                  </div>
+                  <div class="col-xl-4">
+                    <span class="vat-span">NONE</span>
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-xl-2">
+                    <button type="button" class="btn form-control edit-btns" id="exampleInputEmail2">Edit</button>
+                  </div>
+                  <div class="col-xl-1">
+
+                  </div>
+                  <div class="col-xl-5">
+                    <span class="sales-taxes-span">Stock Polling</span>
+                  </div>
+                  <div class="col-xl-4">
+                    <span class="vat-span">STOCK POLLING</span>
+
+                  </div>
+                  
+                </div>
+                <div class="form-group row">
+                  <div class="col-xl-2">
+                    <button type="button" class="btn form-control edit-btns" id="exampleInputEmail2">Edit</button>
+                  </div>
+                  <div class="col-xl-1">
+
+                  </div>
+                  <div class="col-xl-5">
+                    <span class="sales-taxes-span">Course Type</span>
+                  </div>
+                  <div class="col-xl-4">
+                    <span class="vat-span">NONE</span>
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="form-input-container">
+              <label for="dropdown1" class="form-label">Product Cost</label>
+              <div class="product-setting-container">
+                <div class="form-group row">
+                  <div class="col-xl-6">
+                    <label class="form-label" for="exampleInputEmail1" style="display: inline-block; width: 150px;">Barcode 2</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="05226649988774565411223" style="display: inline-block; width: calc(100% - 160px);">
+                  </div>
+                  <div class="col-xl-6">
+                    <label class="form-label" for="exampleInputEmail1" style="display: inline-block; width: 150px;">Barcode 2</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="05226649988774565411223" style="display: inline-block; width: calc(100% - 160px);">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
+
+
+
+
           <div class="col-xl-2">
             <label for="dropdown2" class="form-label">Dropdown 2</label>
             <div class="dropdown w-100">

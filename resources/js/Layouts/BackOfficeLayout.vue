@@ -315,6 +315,12 @@ div.item a {
     padding: 10px 15px; /* Adjust padding as needed */
 }
 
+.scrollable-div {
+    height: 900px;
+    overflow: auto;
+    padding-right:  10px;
+}
+
 </style>
 <template>
     <div>
@@ -328,142 +334,149 @@ div.item a {
         <div class="min-h-screen body-bg">
             <div class="container-fluid">
                 <div class="row flex-nowrap">
-                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light nav-container d-flex flex-column justify-content-center align-items-center">
-                        <div class="d-flex flex-column align-items-center text-center min-vh-100">
-                            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 the-logo text-decoration-none justify-content-center">
-                                <img src="https://financesonline.com/uploads/2019/02/BIM-POS-logo.jpg">
-                            </a> 
-                            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 the-dashboard text-decoration-none justify-content-center">
-                                <span class="d-none d-sm-inline">The Dashboard</span>
-                            </a> 
-                            <hr />
-                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                                <div class="line-div"></div>
+                    <nav class="scrollable-div col-auto col-sm-2 px-sm-2 px-0 bg-light nav-container d-flex flex-column justify-content-center align-items-center">
+                        <!-- Navbar Toggler Button -->
+                        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button> -->
 
-                                <li class="container nav-item li-in-page-title">
-                                    
-                                    <a href="#" class="nav-link d-flex align-items-center">
+                        <div >
+                            <div class="d-flex flex-column align-items-center text-center min-vh-100">
+                                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 the-logo text-decoration-none justify-content-center">
+                                    <img src="https://financesonline.com/uploads/2019/02/BIM-POS-logo.jpg">
+                                </a> 
+                                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 the-dashboard text-decoration-none justify-content-center">
+                                    <span class="d-none d-sm-inline">The Dashboard</span>
+                                </a> 
+                                <hr />
+                                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                                    <div class="line-div"></div>
+
+                                    <li class="container nav-item li-in-page-title">
                                         
-                                        <span class="material-symbols-outlined me-2 icon-left-arrow">
-                                            chevron_left
-                                        </span>
-                                        
-                                        <span class="in-page-title">Product Setup</span>
-                                    </a>
-
-                                </li>
-                                <div class="line-div"></div>
-
-                                <li class="nav-item drop-down-products">
-                                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link ">
-                                        <i class="fs-4 bi-speedometer2"></i> 
-                                        <div class="drop-down-products-title-container">
-                                            <span class="drop-down-products-title">
-                                                USD Products
-                                            </span> 
-                                            <span class="drop-down-products-descript">
-                                                FUSD At
-                                            </span> 
-                                        </div>
-                                        <div class="drop-down-products-amount-container">
-                                            <span class="d-sm-inline drop-down-products-amount">
-                                                91,000
-                                            </span> 
-                                            <span class="drop-down-products-amount-icon material-symbols-outlined ">
-                                                keyboard_arrow_down
-                                                
-                                            </span> 
-                                        </div>
-
-                                    </a>
-                                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                        <li class="inside w-100">
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                                        </li>
-                                        <li class="inside">
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <div class="line-div"></div>
-
-                                <li class="nav-item nav-link search-container">
-                                    <span class="search-title">
-                                        Quick Search
-                                    </span> 
-                                    <a href="#" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-table"></i>
-                                        <div>
-                                            <form class="form-inline d-flex">
-                                                <input class="form-control search-input rounded-pill-start" type="search" placeholder="Product Description Ex: Burger" aria-label="Search">
-                                                <button class="btn btn-search-submit rounded-pill-end" type="submit">F3</button>
-                                            </form>
-                                        </div>
-                                    </a>
-                                </li>
-                                <div class="list-container">
-                                    <li class="nav-item li-link-container li-link-container-is-active">
-                                        <a href="#" class="nav-link d-flex " >
-                                            <span class="li-link li-link-is-active">General Information</span>
+                                        <a href="#" class="nav-link d-flex align-items-center">
+                                            
+                                            <span class="material-symbols-outlined me-2 icon-left-arrow">
+                                                chevron_left
+                                            </span>
+                                            
+                                            <span class="in-page-title">Product Setup</span>
                                         </a>
-                                        
+
                                     </li>
-                                    <li class="nav-item li-link-container">
-                                        <a href="#" class="nav-link d-flex">
-                                            <span class="li-link">Product Details</span>
+                                    <div class="line-div"></div>
+
+                                    <li class="nav-item drop-down-products">
+                                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link ">
+                                            <i class="fs-4 bi-speedometer2"></i> 
+                                            <div class="drop-down-products-title-container">
+                                                <span class="drop-down-products-title">
+                                                    USD Products
+                                                </span> 
+                                                <span class="drop-down-products-descript">
+                                                    FUSD At
+                                                </span> 
+                                            </div>
+                                            <div class="drop-down-products-amount-container">
+                                                <span class="d-sm-inline drop-down-products-amount">
+                                                    91,000
+                                                </span> 
+                                                <span class="drop-down-products-amount-icon material-symbols-outlined ">
+                                                    keyboard_arrow_down
+                                                    
+                                                </span> 
+                                            </div>
+
                                         </a>
-                                    </li>
-                                    <li class="nav-item li-link-container">
-                                        <a href="#" class="nav-link d-flex">
-                                            <span class="li-link">Stock Center</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item li-link-container">
-                                        <a href="#" class="nav-link d-flex">
-                                            <span class="li-link">Other Information</span>
-                                        </a>
-                                    </li>
-                                </div>
-                                <li>
-                                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                            <li class="w-100">
-                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                            <li class="inside w-100">
+                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
                                             </li>
-                                            <li>
-                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                                            <li class="inside">
+                                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
                                             </li>
                                         </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                                </li>
-                            </ul>
-                            <hr>
-                            <div class="dropdown pb-4">
-                                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="d-none d-sm-inline mx-1">loser</span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                    <div class="line-div"></div>
+
+                                    <li class="nav-item nav-link search-container">
+                                        <span class="search-title">
+                                            Quick Search
+                                        </span> 
+                                        <a href="#" class="nav-link px-0 align-middle">
+                                            <i class="fs-4 bi-table"></i>
+                                            <div>
+                                                <form class="form-inline d-flex">
+                                                    <input class="form-control search-input rounded-pill-start" type="search" placeholder="Product Description Ex: Burger" aria-label="Search">
+                                                    <button class="btn btn-search-submit rounded-pill-end" type="submit">F3</button>
+                                                </form>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <div class="list-container">
+                                        <li class="nav-item li-link-container li-link-container-is-active">
+                                            <a href="#" class="nav-link d-flex " >
+                                                <span class="li-link li-link-is-active">General Information</span>
+                                            </a>
+                                            
+                                        </li>
+                                        <li class="nav-item li-link-container">
+                                            <a href="#" class="nav-link d-flex">
+                                                <span class="li-link">Product Details</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item li-link-container">
+                                            <a href="#" class="nav-link d-flex">
+                                                <span class="li-link">Stock Center</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item li-link-container">
+                                            <a href="#" class="nav-link d-flex">
+                                                <span class="li-link">Other Information</span>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <li>
+                                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                                <li class="w-100">
+                                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                                                </li>
+                                            </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0 align-middle">
+                                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                                    </li>
                                 </ul>
+                                <hr>
+                                <div class="dropdown pb-4">
+                                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="d-none d-sm-inline mx-1">loser</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </nav>
 
                     <!-- Page Heading -->
                     <header v-if="$slots.header" class="bg-white shadow">
